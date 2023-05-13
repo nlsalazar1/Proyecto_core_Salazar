@@ -9,6 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.springboot.clienteapp.util.LoginSuccessMessage;
+
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -18,6 +20,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private BCryptPasswordEncoder PassEncoder;	
 	
+	@Autowired
+	private LoginSuccessMessage successMessage;
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {  // Le damos los permisos de acuerdo al rol (user o admin)
@@ -36,7 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/views/inmuebles/delete/**").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
-		.formLogin().loginPage("/login")
+		.formLogin()
+			.successHandler(successMessage)
+			.loginPage("/login")
 		.permitAll()
 		.and()
 		.logout().permitAll();
