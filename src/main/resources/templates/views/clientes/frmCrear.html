@@ -45,13 +45,13 @@
 					</div>
 
 					<div class="form-group-row">
-						<label for="email" class="col-md-2 form-label">Email:</label> 
-						<input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6"
-							id="email" placeholder="Email del cliente"> <
-							<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
-									th:errors="*{email}">
-							</small>
+					    <label for="email" class="col-md-2 form-label">Email:</label> 
+					    <input type="text" name="email" class="form-control form-control-sm col-md-6" id="email" placeholder="Email del cliente"> 
+					    <small class="form-text text-danger" th:if="${#fields.hasErrors('email')}"
+					        th:errors="*{email}">
+					    </small>
 					</div>
+
 
 					<div class="form-group-row">
 						<label for="ciudad" class="col-md-2 form-label">Ciudad:</label> 

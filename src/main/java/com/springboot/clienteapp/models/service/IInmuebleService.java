@@ -6,10 +6,11 @@ import com.springboot.clienteapp.models.entity.Inmueble;
 
 public interface IInmuebleService {
 
-	public List<Inmueble> listarTodos();
+	public List<Inmueble> listarTodosInm();
+	
 	public void guardar(Inmueble inmueble);
-	public Inmueble buscarPorId(Integer id);
-	public void eliminar(Integer id);
-
-	//List<Inmueble> list();
+	
+	public Inmueble buscarPorId(Integer idInmueble);
+	
+	public void eliminar(Integer idInmueble);
 }

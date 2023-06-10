@@ -9,57 +9,56 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
-
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "inmuebles")
-public class Inmueble implements Serializable{
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int idInmueble;
-	//private int clientes_id;
-	
-	@NotEmpty
-	private int area;
-	
-	@NotEmpty
-	private String tipo;
-	
-	@NotEmpty
-	private String sector;
-	
-	@NotEmpty
-	private int dormitorios;
-	private int banios;
-	
-	@NotEmpty
-	private float precio;
-	private String descripcion;	
-	
-	@ManyToOne
-	@JoinColumn(name="clientes_id")
-	private Cliente cliente;
+public class Inmueble implements Serializable {
 
-	public int getIdInmueble() {
-		return idInmueble;
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id_Inmueble;
+
+    @NotNull
+    private Integer area;
+
+    @NotEmpty
+    private String tipo;
+
+    @NotEmpty
+    private String sector;
+
+    @NotNull
+    private Integer dormitorios;
+
+    private Integer banios;
+
+    @DecimalMin("0.0")
+    private Float precio;
+
+    private String descripcion;
+
+    @ManyToOne
+    @JoinColumn(name = "clientes_id")
+    private Cliente cliente;
+    
+	public Integer getIdInmueble() {
+		return id_Inmueble;
 	}
 
-	public void setIdInmueble(int idInmueble) {
-		this.idInmueble = idInmueble;
+	public void setIdInmueble(Integer idInmueble) {
+		this.id_Inmueble = idInmueble;
 	}
 
-	public int getArea() {
+	public Integer getArea() {
 		return area;
 	}
 
-	public void setArea(int area) {
+	public void setArea(Integer area) {
 		this.area = area;
 	}
 
@@ -79,27 +78,27 @@ public class Inmueble implements Serializable{
 		this.sector = sector;
 	}
 
-	public int getDormitorios() {
+	public Integer getDormitorios() {
 		return dormitorios;
 	}
 
-	public void setDormitorios(int dormitorios) {
+	public void setDormitorios(Integer dormitorios) {
 		this.dormitorios = dormitorios;
 	}
 
-	public int getBanios() {
+	public Integer getBanios() {
 		return banios;
 	}
 
-	public void setBanios(int banios) {
+	public void setBanios(Integer banios) {
 		this.banios = banios;
 	}
 
-	public float getPrecio() {
+	public Float getPrecio() {
 		return precio;
 	}
 
-	public void setPrecio(float precio) {
+	public void setPrecio(Float precio) {
 		this.precio = precio;
 	}
 
@@ -121,10 +120,12 @@ public class Inmueble implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Inmueble [idInmueble=" + idInmueble + ", area=" + area + ", tipo=" + tipo + ", sector=" + sector
+		return "Inmueble [idInmueble=" + id_Inmueble + ", area=" + area + ", tipo=" + tipo + ", sector=" + sector
 				+ ", dormitorios=" + dormitorios + ", banios=" + banios + ", precio=" + precio + ", descripcion="
 				+ descripcion + ", cliente=" + cliente + "]";
 	}
+
+	
 		
 	
 	

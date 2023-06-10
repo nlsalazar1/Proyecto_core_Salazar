@@ -15,6 +15,7 @@ public class LoginController {
 	public String login(@RequestParam(value="error", required = false) String error, 
 			@RequestParam(value="logout", required = false) String logout,		
 			Model model, Principal principal, RedirectAttributes attribute){
+		
 		// Validamos que el usuario ingrese las credenciales correctas
 		if(error!=null) {
 			model.addAttribute("error", "ERROR DE ACCESO: Usuario y/o Contraseña son incorrectos");

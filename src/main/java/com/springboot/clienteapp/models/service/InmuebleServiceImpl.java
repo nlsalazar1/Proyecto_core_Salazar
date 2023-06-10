@@ -15,30 +15,27 @@ public class InmuebleServiceImpl implements IInmuebleService {
 	private InmuebleRepository inmuebleRepository;
 	
 	@Override
-	public List<Inmueble> listarTodos() {
+	public List<Inmueble> listarTodosInm() {
+		
 		return (List<Inmueble>) inmuebleRepository.findAll();
 	}
 
 	@Override
 	public void guardar(Inmueble inmueble) {
-
 		inmuebleRepository.save(inmueble);
+
 	}
 
 	@Override
 	public Inmueble buscarPorId(Integer idInmueble) {
-		return inmuebleRepository.findById(idInmueble).orElse(null); //controlamos que el id que nos retorne exista, caso contrario validamos poniendo null
 		
+		return inmuebleRepository.findById(idInmueble).orElse(null);
 	}
 
 	@Override
 	public void eliminar(Integer idInmueble) {
 		inmuebleRepository.deleteById(idInmueble);
-	}
-}
-	/*@Override
-	public List<Inmueble> list() {
-		List<Inmueble> inmuebles = inmuebleRepository.findAllByClienteId(3);
-		return inmuebles;
-	}*/
 
+	}
+
+}

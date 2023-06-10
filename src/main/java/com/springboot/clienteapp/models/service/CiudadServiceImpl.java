@@ -20,4 +20,20 @@ public class CiudadServiceImpl implements ICiudadService {
 		return (List<Ciudad>) ciudadRepository.findAll();
 	}
 
+	//@Override
+	public void guardar(Ciudad ciudad) {
+
+		ciudadRepository.save(ciudad);
+	}
+
+	//@Override
+	public Ciudad buscarPorId(Long id) {
+		return ciudadRepository.findById(id).orElse(null); //Controlamos con orElse que no nos retorne un ERROR en caso de que no exista
+	}
+
+	//@Override
+	public void eliminar(Long id) {
+		ciudadRepository.deleteById(id); 
+	}
+
 }

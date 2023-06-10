@@ -32,11 +32,11 @@ public class InmuebleController {
 	@GetMapping("/")
 	public String listarInmuebles(Model model) {
 		
-		List<Inmueble> listadoInmuebles = inmuebleService.listarTodos(); //Usamos un metodo de la clase que estan en IInmuebleService
+		List<Inmueble> listadoInmuebles = inmuebleService.listarTodosInm(); //Usamos un metodo de la clase que estan en IInmuebleService
 		
 		model.addAttribute("titulo","Lista de Inmuebles"); //Podemos enviar el titulo de la pagina desde esta clase
 		model.addAttribute("inmuebles", listadoInmuebles); //Enviamos a la pag el listado de clientes
-		return "/views/inmuebles/listar";
+		return "/views/inmuebles/listarinm";
 	}
 	
 	@GetMapping("/create")
@@ -49,7 +49,7 @@ public class InmuebleController {
 		model.addAttribute("inmueble", inmueble);
 		model.addAttribute("clientes", listClientes);
 		
-		return "/views/inmuebles/frmCrear";
+		return "/views/inmuebles/frmCrearinm";
 	}
 	
 	@PostMapping("/save")
@@ -83,11 +83,11 @@ public class InmuebleController {
 		model.addAttribute("inmueble", inmueble);
 		model.addAttribute("clientes", listClientes);
 		
-		return "/views/inmuebles/frmCrear";
+		return "/views/inmuebles/frmCrearinm";
 	}
 	
-	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Integer idInmueble){
+	@GetMapping("/delete/{idInmueble}")
+	public String eliminar(@PathVariable("idInmueble") Integer idInmueble){
 		
 		inmuebleService.eliminar(idInmueble);
 		System.out.println("El registro se elimino con exito...!!!");
