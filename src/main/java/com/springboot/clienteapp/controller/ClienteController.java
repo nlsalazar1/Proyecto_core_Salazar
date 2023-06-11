@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.springboot.clienteapp.models.entity.Ciudad;
 import com.springboot.clienteapp.models.entity.Cliente;
+import com.springboot.clienteapp.models.entity.Inmueble;
 import com.springboot.clienteapp.models.service.ICiudadService;
 import com.springboot.clienteapp.models.service.IClienteService;
+import com.springboot.clienteapp.models.service.IInmuebleService;
 
 @Controller
 @RequestMapping("/views/clientes")
@@ -28,6 +30,9 @@ public class ClienteController {
 	
 	@Autowired
 	private ICiudadService ciudadService;
+	
+	@Autowired 
+	private IInmuebleService inmuebleService; //importamos un objeto IInmuebleService
 	
 	@GetMapping("/")
 	public String listarClientes(Model model) {
@@ -93,5 +98,18 @@ public class ClienteController {
 		System.out.println("El registro se elimino con exito...!!!");
 		
 		return "redirect:/views/clientes/";
+	}
+	
+	
+	//-------------------------------------------------------------------------------------
+	
+	@GetMapping("/inmueblesCli/{clientes_Id}")
+	public String listarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
+	    
+		List<Inmueble> listadoInmuebles = inmuebleService.listarInmueblesPorClienteId(clientes_Id);
+	    model.addAttribute("titulo", "Lista de Inmuebles del Cliente");
+	    model.addAttribute("inmuebles", listadoInmuebles);
+
+	    return "views/inmuebles/listaInmCliente";
 	}
 }

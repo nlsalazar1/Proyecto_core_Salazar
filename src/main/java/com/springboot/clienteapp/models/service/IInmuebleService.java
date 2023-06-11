@@ -13,4 +13,6 @@ public interface IInmuebleService {
 	public Inmueble buscarPorId(Integer idInmueble);
 	
 	public void eliminar(Integer idInmueble);
+	
+	public List<Inmueble> listarInmueblesPorClienteId(Long clientes_Id);
 }

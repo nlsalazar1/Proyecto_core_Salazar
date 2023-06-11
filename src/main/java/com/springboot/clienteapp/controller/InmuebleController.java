@@ -92,8 +92,11 @@ public class InmuebleController {
 		inmuebleService.eliminar(idInmueble);
 		System.out.println("El registro se elimino con exito...!!!");
 		
-		return "redirect:/views/inmuebles/";
-	}
+		return "/views/inmuebles/";
+	}	
+	
+	
+	
 }
 	
 	/*@GetMapping("/")

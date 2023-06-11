@@ -38,6 +38,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/views/inmuebles/save").hasAnyRole("ADMIN")
 		.antMatchers("/views/inmuebles/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo
 		.antMatchers("/views/inmuebles/delete/**").hasAnyRole("ADMIN")
+		.antMatchers("/views/clientes/inmueblesCli/").hasAnyRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()

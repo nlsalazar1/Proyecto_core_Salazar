@@ -23,6 +23,8 @@ public class Inmueble implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id_Inmueble;
 
+    //private Integer clientes_id;
+    
     @NotNull
     private Integer area;
 
@@ -41,7 +43,7 @@ public class Inmueble implements Serializable {
     private Float precio;
 
     private String descripcion;
-
+    
     @ManyToOne
     @JoinColumn(name = "clientes_id")
     private Cliente cliente;
@@ -52,7 +54,15 @@ public class Inmueble implements Serializable {
 
 	public void setIdInmueble(Integer idInmueble) {
 		this.id_Inmueble = idInmueble;
+	}	
+	
+	/*public Integer getClientes_id() {
+		return clientes_id;
 	}
+
+	public void setClientes_id(Integer clientes_id) {
+		this.clientes_id = clientes_id;
+	}*/
 
 	public Integer getArea() {
 		return area;
