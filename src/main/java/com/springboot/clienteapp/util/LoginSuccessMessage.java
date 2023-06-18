@@ -21,7 +21,7 @@ public class LoginSuccessMessage extends SimpleUrlAuthenticationSuccessHandler{
 		SessionFlashMapManager fManager = new SessionFlashMapManager();
 		FlashMap fMap = new FlashMap();
 		
-		fMap.put("success", "Ha iniciado sesion con exito...");
+		fMap.put("success", "Ha iniciado sesion con exito..."); //success es un atributo que ya lo creamos en la plantilla para usarlo como mensaje
 		fManager.saveOutputFlashMap(fMap, request, response);
 		super.onAuthenticationSuccess(request, response, authentication);
 	}

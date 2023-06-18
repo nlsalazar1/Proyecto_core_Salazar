@@ -1,5 +1,6 @@
 <! DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- Usamos para realizar el logout, mirar la documentacion de thymeleaf en security -->
 <head th:replace="plantilla/template :: head">
 </head>
 <body>
@@ -11,7 +12,7 @@
 
 	<div class="container">
 	
-		<a class="btn btn-primary btn-sm" th:href="@{/views/clientes/create}"
+		<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/views/clientes/create}"
 			th:text="'Nuevo Cliente'" title="Crear Nuevo Registro">
 		</a>
 		
@@ -24,8 +25,8 @@
 					<th scope="col">Telefono</th>
 					<th scope="col">Correo</th>
 					<th scope="col">Ciudad</th>
-					<th scope="col">Editar</th>
-					<th scope="col">Eliminar</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th> <!-- video seguridad 11 -->
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
 					<th scope="col">Inmuebles</th>
 				</tr>
 			</thead>
@@ -38,12 +39,12 @@
 					<td th:text="${cl.email}"></td>
 					<td th:text="${cl.ciudad.ciudad} "></td>
 					
-					<td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')"><!-- video seguridad 11 -->
 						<a class="btn btn-success btn-sm" th:href="@{/views/clientes/edit/}+${cl.id}"
 							th:text="'Editar'" title="Editar Registro">
 						</a>
 					</td>
-					<td>
+					<td sec:authorize="hasRole('ROLE_ADMIN')">
 						<a class="btn btn-danger btn-sm" th:href="@{/views/clientes/delete/}+${cl.id}"
 							th:text="'Eliminar'" title="Eliminar Registro"
 							onclick="return confirm('Esta seguro de eliminar el registro?');"> <!-- onClick lo usamos para preguntar si desea eliminar el registro -->

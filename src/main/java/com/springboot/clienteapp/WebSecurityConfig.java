@@ -28,12 +28,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		
 		http.authorizeRequests()
 		.antMatchers("/","/home","/index","/css/**","/js/**","/images/**").permitAll()
-		.antMatchers("/views/clientes/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
+		//.antMatchers("/views/clientes/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
+		//.antMatchers("/views/clientes/").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/create").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/save").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo
 		.antMatchers("/views/clientes/delete/**").hasAnyRole("ADMIN")
-		.antMatchers("/views/inmuebles/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
+		//.antMatchers("/views/inmuebles/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
+		//.antMatchers("/views/inmuebles/").hasAnyRole("ADMIN")
 		.antMatchers("/views/inmuebles/create").hasAnyRole("ADMIN")
 		.antMatchers("/views/inmuebles/save").hasAnyRole("ADMIN")
 		.antMatchers("/views/inmuebles/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo

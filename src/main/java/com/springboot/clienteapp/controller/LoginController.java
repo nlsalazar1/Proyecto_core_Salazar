@@ -22,7 +22,7 @@ public class LoginController {
 		}
 		// Validamos que el usuario no pueda regresar a login sin antes cerrar la sesion o la ventana
 		if(principal!=null) {
-			model.addAttribute("warning", "ATENCION: Utd ya ha iniciado sesión previamente");
+			attribute.addFlashAttribute("warning", "ATENCION: Utd ya ha iniciado sesión previamente");
 			return "redirect:/index";
 		}
 		if(logout!=null) {
