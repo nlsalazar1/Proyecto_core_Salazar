@@ -31,7 +31,8 @@ public class Cliente implements Serializable{
 	@NotEmpty
 	private String apellidos;
 	
-	@NotEmpty
+	//@NotEmpty
+	@Pattern(regexp="[0-9]{4}-[0-9]{3}") //video crud 12
 	private String telefono;
 	
 	@NotEmpty

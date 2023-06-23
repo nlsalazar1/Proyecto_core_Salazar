@@ -5,12 +5,14 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.springboot.clienteapp.util.LoginSuccessMessage;
 
+@EnableGlobalMethodSecurity(securedEnabled=true) // video 12 seguridad - para dar los permisos USER O ADMIN
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -30,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/","/home","/index","/css/**","/js/**","/images/**").permitAll()
 		//.antMatchers("/views/clientes/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
 		//.antMatchers("/views/clientes/").hasAnyRole("ADMIN")
-		.antMatchers("/views/clientes/create").hasAnyRole("ADMIN")
+		/*.antMatchers("/views/clientes/create").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/save").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo
 		.antMatchers("/views/clientes/delete/**").hasAnyRole("ADMIN")
@@ -40,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/views/inmuebles/save").hasAnyRole("ADMIN")
 		.antMatchers("/views/inmuebles/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo
 		.antMatchers("/views/inmuebles/delete/**").hasAnyRole("ADMIN")
-		.antMatchers("/views/clientes/inmueblesCli/").hasAnyRole("ADMIN")
+		.antMatchers("/views/clientes/inmueblesCli/").hasAnyRole("ADMIN")*/
 		.anyRequest().authenticated()
 		.and()
 		.formLogin()

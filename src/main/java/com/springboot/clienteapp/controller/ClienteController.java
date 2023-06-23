@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.clienteapp.models.entity.Ciudad;
 import com.springboot.clienteapp.models.entity.Cliente;
@@ -34,6 +36,8 @@ public class ClienteController {
 	@Autowired 
 	private IInmuebleService inmuebleService; //importamos un objeto IInmuebleService
 	
+	
+	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad - hay que avilitar la anotacion en WebSecurityConfig
 	@GetMapping("/")
 	public String listarClientes(Model model) {
 		
@@ -44,7 +48,8 @@ public class ClienteController {
 		return "/views/clientes/listar";
 	}
 	
-	@GetMapping("/create")
+	@Secured("ROLE_ADMIN") //video 12 seguridad
+	@GetMapping("/create") 
 	public String crear(Model model){
 		
 		Cliente cliente = new Cliente();
@@ -57,8 +62,10 @@ public class ClienteController {
 		return "/views/clientes/frmCrear";
 	}
 	
+	@Secured("ROLE_ADMIN") //video 12 seguridad
 	@PostMapping("/save")
-	public String guardar(@Valid @ModelAttribute Cliente cliente, BindingResult result, Model model) { //@BindigResult captura los errores del formulario 
+	public String guardar(@Valid @ModelAttribute Cliente cliente, BindingResult result, //@BindigResult captura los errores del formulario 
+			Model model, RedirectAttributes attribute) { //RedirectAttributes utilizamos para dar los mensajes de exito o error de la plantilla - video 14 crud
 		
 		List<Ciudad> listCiudades = ciudadService.listaCiudades();
 		
@@ -69,19 +76,38 @@ public class ClienteController {
 			model.addAttribute("cliente", cliente);
 			model.addAttribute("ciudades", listCiudades);
 			System.out.println("Existieron errores en el formulario..!!!");
+			
 			return "/views/clientes/frmCrear";
 		}
 		
 		clienteService.guardar(cliente);
 		
 		System.out.println("Cliente guardado con exito..!!!");
+		attribute.addFlashAttribute("success","Cliente guardado con exito..!!!");
 		return "redirect:/views/clientes/";
 	}
 	
+	@Secured("ROLE_ADMIN") //video 12 seguridad
 	@GetMapping("/edit/{id}")
-	public String editar(@PathVariable("id") Long idCliente, Model model){
+	public String editar(@PathVariable("id") Long idCliente, Model model, RedirectAttributes attribute){
 		
-		Cliente cliente = clienteService.buscarPorId(idCliente);
+		Cliente cliente = null;
+		
+		if(idCliente > 0) { //video 13 crud asegurar de que exista el cliente
+			cliente = clienteService.buscarPorId(idCliente);
+			if(cliente == null) {
+				System.out.println("Error: El ID del cliente no existe!");
+				attribute.addFlashAttribute("error","ATENCIÓN: Error el ID del cliente no existe!!!");
+
+				return "redirect:/views/clientes/";
+			}
+		}else {
+			System.out.println("Error: Error con el ID del cliente!");
+			attribute.addFlashAttribute("error","ATENCIÓN: Error con el ID del cliente!!!");
+
+			return "redirect:/views/clientes/";
+		}
+		
 		List<Ciudad> listCiudades = ciudadService.listaCiudades();
 		
 		model.addAttribute("titulo", "Formulario: Editar Cliente"); //Enviamos informacion al formulario
@@ -91,18 +117,40 @@ public class ClienteController {
 		return "/views/clientes/frmCrear";
 	}
 	
+	@Secured("ROLE_ADMIN") //video 12 seguridad
 	@GetMapping("/delete/{id}")
-	public String eliminar(@PathVariable("id") Long idCliente){
+	public String eliminar(@PathVariable("id") Long idCliente, RedirectAttributes attribute){
+		
+		Cliente cliente = null;
+		
+		if(idCliente>0) {
+			cliente = clienteService.buscarPorId(idCliente);
+			
+			if(cliente == null) {
+				System.out.println("Error: El ID del cliente no existe!");
+				attribute.addFlashAttribute("error","ATENCIÓN: Error el ID del cliente no existe!!!");
+
+				return "redirect:/views/clientes/";
+			}
+		}else {
+			System.out.println("Error: Error con el ID del cliente!");
+			attribute.addFlashAttribute("error","ATENCIÓN: Error con el ID del cliente!!!");
+
+			return "redirect:/views/clientes/";
+		}				
+			
 		
 		clienteService.eliminar(idCliente);
 		System.out.println("El registro se elimino con exito...!!!");
-		
+		attribute.addFlashAttribute("warning","ATENCIÓN: El registro se elimino con exito...!!!");
+
 		return "redirect:/views/clientes/";
 	}
 	
 	
 	//-------------------------------------------------------------------------------------
 	
+	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
 	@GetMapping("/inmueblesCli/{clientes_Id}")
 	public String listarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
 	    
