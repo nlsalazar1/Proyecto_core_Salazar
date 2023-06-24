@@ -1,0 +1,136 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+
+	<link rel="stylesheet" href="../../../static/css/normalize.css">
+	<link rel="stylesheet" href="../../../static/css/style.css">	
+	
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- Optional theme -->
+	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" />
+	
+	<script>
+	    // Obtén los datos del controlador y conviértelos a JSON
+	    var datosInmuebles = JSON.parse("{{InmuebleCantidadSectorDTO | json_encode}}");
+	</script>
+	
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+		<!--  p th:text="${inmuebles}"></p-->
+	</div>
+	
+	
+	
+	<div class="container">
+		<h2 align="center">Estadísticas de publicaciones </h2>
+		
+	</div>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+	
+
+
+	<ul class="btn-warning">
+						
+		<li class="dropdown" >
+			<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Grafico</button>
+									  
+						
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+				<a class="dropdown-item" href="#">Barras</a>
+				<a class="dropdown-item" href="#">Pastel</a>
+				<a class="dropdown-item" href="#">Otro</a>				
+						    
+			</div>
+		</li>
+						
+	</ul>
+	
+
+	<div id="container2" style="height: 400px"></div>
+
+	<script th:inline="javascript">
+		Highcharts.chart('container2', {
+			chart : {
+				type : 'pie',
+				options3d : {
+					enabled : true,
+					alpha : 50,
+					beta : 0
+				}
+			},
+			title : {
+				text : 'Result Status'
+			},
+			tooltip : {
+				pointFormat : '{series.name}: <b>{point.percentage:.1f}%</b>'
+			},
+			plotOptions : {
+				pie : {
+					allowPointSelect : true,
+					cursor : 'pointer',
+					depth : 35,
+					dataLabels : {
+						enabled : true,
+						format : '{point.name}'
+					}
+				}
+			},
+			series : [ {
+				type : 'pie',
+				name : 'Ratio',
+				data : [ [ 'Success', [[${pass}]] ], [ 'Failure', [[${fail}]] ]  ]
+			} ]
+		});
+	</script>
+	
+	
+
+	
+	<!-- table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Sector</th>
+					<th scope="col">cantidad</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="pub:${InmuebleCantidadSectorDTO}">
+					<th scope="row" th:text="${pub.sector}"></th>
+					<td th:text="${pub.cantidad}"></td>
+					
+				</tr>
+			</tbody>
+		</table-->
+	
+	
+	<!-- div id="container" style="width:100%; height: 500px; margin: 0 auto;"></div>
+	<div id="play-range" style="width:100%; height: 500px; margin: 0 auto;"></div>
+	
+	
+	<div id="container3" style="width:100%; height: 500px; margin: 0 auto;"></div>
+	
+	
+	<div id="basicArea" style="width:100%; height: 500px; margin: 0 auto;"></div-->
+	
+	
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+	
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script type="text/javascript" src="../../../static/js/graficas.js"></script>
+</body>
+</html>

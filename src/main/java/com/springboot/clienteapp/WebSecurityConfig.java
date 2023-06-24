@@ -2,7 +2,9 @@ package com.springboot.clienteapp;
 
 import javax.sql.DataSource;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -29,7 +31,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception {  // Le damos los permisos de acuerdo al rol (user o admin)
 		
 		http.authorizeRequests()
-		.antMatchers("/","/home","/index","/css/**","/js/**","/images/**").permitAll()
+		.antMatchers("/","/home","/index","/css/**","/js/**","/images/**","//").permitAll()
+		.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+        .regexMatchers("^.*//.*$").permitAll() // Permitir URLs que contengan "//"       
 		//.antMatchers("/views/clientes/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
 		//.antMatchers("/views/clientes/").hasAnyRole("ADMIN")
 		/*.antMatchers("/views/clientes/create").hasAnyRole("ADMIN")

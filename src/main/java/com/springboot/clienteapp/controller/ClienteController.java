@@ -1,6 +1,10 @@
 package com.springboot.clienteapp.controller;
 
 import java.util.List;
+import java.math.BigInteger;
+import java.util.ArrayList;
+
+
 
 import javax.validation.Valid;
 
@@ -14,14 +18,17 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.springboot.clienteapp.models.entity.Ciudad;
 import com.springboot.clienteapp.models.entity.Cliente;
 import com.springboot.clienteapp.models.entity.Inmueble;
+import com.springboot.clienteapp.models.entity.InmuebleCantidadSectorDTO;
 import com.springboot.clienteapp.models.service.ICiudadService;
 import com.springboot.clienteapp.models.service.IClienteService;
 import com.springboot.clienteapp.models.service.IInmuebleService;
+import com.springboot.clienteapp.models.service.IPublicacionService;
 
 @Controller
 @RequestMapping("/views/clientes")
@@ -35,6 +42,10 @@ public class ClienteController {
 	
 	@Autowired 
 	private IInmuebleService inmuebleService; //importamos un objeto IInmuebleService
+	
+
+	@Autowired
+	private IPublicacionService publicacionService;
 	
 	
 	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad - hay que avilitar la anotacion en WebSecurityConfig
@@ -160,4 +171,67 @@ public class ClienteController {
 
 	    return "views/inmuebles/listaInmCliente";
 	}
+	
+	
+	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
+	@GetMapping("/inmueblesCliImg/{clientes_Id}")
+	public String mostrarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
+	    
+		publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
+
+		List<Inmueble> listadoInmuebles = inmuebleService.listarInmueblesPorClienteId(clientes_Id);
+	    model.addAttribute("titulo", "Lista de Inmuebles del Cliente");
+	    model.addAttribute("inmuebles", listadoInmuebles);
+
+	    return "views/inmuebles/mostrarInmuebles";
+	}
+	
+	
+	/*@GetMapping("/sectores")   // funciona envia los datos directo al html
+    public String obtenerCantidadInmueblesPorSector(Model model) {
+        // Lógica para obtener los datos de cantidad de inmuebles por sector desde el repositorio
+        
+		List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
+        
+		List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
+
+        for (Object[] result : results) {
+            String sector = (String) result[0];
+            BigInteger cantidad = (BigInteger) result[1];
+            
+            InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+            listaSectores.add(inmuebleCantidadSectorDTO);
+        }
+        
+        
+
+		model.addAttribute("titulo","Cantidad de inmuebles por sector"); //Podemos enviar el titulo de la pagina desde esta clase
+		model.addAttribute("InmuebleCantidadSectorDTO", listaSectores); //Enviamos a la pag el listado de clientes
+		
+		return "/views/analisis/AnalisisGraficas";
+        
+        
+        //return listaSectores;
+    }*/
+	
+	
+	
+	    /*@GetMapping("/sectores") //Enviamos los datos directamente a graficas.js
+	    @ResponseBody
+	    public List<InmuebleCantidadSectorDTO> obtenerCantidadInmueblesPorSector() {
+	        // Lógica para obtener los datos de cantidad de inmuebles por sector desde el repositorio
+	        List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
+	        List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
+
+	        for (Object[] result : results) {
+	            String sector = (String) result[0];
+	            BigInteger cantidad = (BigInteger) result[1];
+
+	            InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+	            listaSectores.add(inmuebleCantidadSectorDTO);
+	        }
+
+	        return listaSectores;
+	    }*/
+	
 }

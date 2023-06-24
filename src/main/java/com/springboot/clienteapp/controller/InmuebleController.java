@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import com.springboot.clienteapp.models.entity.Cliente;
 import com.springboot.clienteapp.models.entity.Inmueble;
 import com.springboot.clienteapp.models.service.IClienteService;
 import com.springboot.clienteapp.models.service.IInmuebleService;
+import com.springboot.clienteapp.models.service.IPublicacionService;
 
 @Controller
 @RequestMapping("/views/inmuebles")
@@ -29,6 +31,9 @@ public class InmuebleController {
 	@Autowired
 	private IClienteService clienteService;
 	
+	@Autowired
+	private IPublicacionService publicacionService;
+	
 	@GetMapping("/")
 	public String listarInmuebles(Model model) {
 		
@@ -39,6 +44,7 @@ public class InmuebleController {
 		return "/views/inmuebles/listarinm";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/create")
 	public String crear(Model model){
 		
@@ -51,6 +57,7 @@ public class InmuebleController {
 		
 		return "/views/inmuebles/frmCrearinm";
 	}
+	
 	
 	@PostMapping("/save")
 	public String guardar(@Valid @ModelAttribute Inmueble inmueble, BindingResult result, Model model) { //@BindigResult captura los errores del formulario 
@@ -73,6 +80,7 @@ public class InmuebleController {
 		return "redirect:/views/inmuebles/";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Integer idInmueble, Model model){
 		
@@ -86,6 +94,7 @@ public class InmuebleController {
 		return "/views/inmuebles/frmCrearinm";
 	}
 	
+	@Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{idInmueble}")
 	public String eliminar(@PathVariable("idInmueble") Integer idInmueble){
 		
@@ -96,16 +105,23 @@ public class InmuebleController {
 	}	
 	
 	
+	//-----------------------------------------------------------------------------------------------------------
+	
+	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
+	@GetMapping("/inmueblesCliImg/{clientes_Id}")
+	public String mostrarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
+	    
+		//publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
+		
+		List<Inmueble> listadoInmuebles = inmuebleService.listarInmueblesPorClienteId(clientes_Id);
+		
+		
+	    model.addAttribute("titulo", "Lista de Inmuebles del Cliente");
+	    model.addAttribute("inmuebles", listadoInmuebles);
+
+	    return "views/analisis/AnalisisGraficas";
+	}
 	
 }
 	
-	/*@GetMapping("/")
-	public String list(Model model) {
-		
-		List<Inmueble> listadoInmuebles = inmuebleService.list(); //Usamos un metodo de la clase que estan en IInmuebleService
-		
-		model.addAttribute("titulo","Lista de Inmuebles");
-        model.addAttribute("inmuebles", listadoInmuebles);
-        return "/views/inmuebles/list";
-    }*/
-
+	

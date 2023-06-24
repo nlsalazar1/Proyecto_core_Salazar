@@ -9,7 +9,7 @@
 
 		<div class="card bg-light">
 		    <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
-		    <div class="card-body">
+		    <div class="card-body formularioIngreso">
 		        <form th:action="@{/views/inmuebles/save}" th:object="${inmueble}" method="post">
 		            <div class="form-group-row">
 		                <input type="hidden" th:field="*{idInmueble}">

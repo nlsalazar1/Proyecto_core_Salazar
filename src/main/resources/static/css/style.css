@@ -381,3 +381,48 @@ textarea{
     justify-content: space-between;
     align-items: center;
 }
+
+.container2 {
+  max-width: 95%;
+  margin: 0 auto; /* Añade esta línea para centrar horizontalmente */
+}
+
+.formularioIngreso {
+	margin-bottom: 50px;
+}
+
+-- Parte de Analisis
+
+.inmuebles-container {
+    display: flex;
+    justify-content: center;
+}
+.inmueble {
+	display: inline-block;
+    width: 49%;
+    margin-bottom: 20px;
+    background-color: #e8f2fa;
+    padding: 1rem 2rem;
+}
+        
+.inmueble .nombre {
+    font-size: 18px;
+    font-weight: bold;
+    color: #26699d;
+}
+        
+.inmueble img {
+    width: 180px;
+    height: auto;
+    background-color: #d3d3d8;
+}
+        
+.inmueble .info {
+    float: right;
+    width: 60%;
+ }
+        
+ .inmueble .info .titulo {
+    font-size: 14px;
+    font-weight: bold;
+ }

@@ -44,6 +44,9 @@
 						<li class="nav-item" sec:authorize="isAuthenticated()"> <!-- video seguridad 11 -->
 							<a class="nav-link"th:href="@{/views/inmuebles/}">Inmuebles</a>
 						</li>
+						<li class="nav-item" sec:authorize="isAuthenticated()"> <!-- video seguridad 11 -->
+							<a class="nav-link"th:href="@{/views/analisis/mostrardisplayBarGraph}">Estadística</a>
+						</li>
 					</ul>
 					<ul class="navbar-nav-right btn-warning">
 						<li sec:authorize="!isAuthenticated()">
