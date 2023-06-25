@@ -64,6 +64,14 @@ public class IpublicacionServiceImpl implements IPublicacionService {
 		return results;
         
     }
+
+	@Override
+	public List<Object[]> ObtenerInmueblesSimilares(String tipo, int banios, int dormitorios, int area) {
+		
+		List<Object[]> results = inmuebleRepository.ObtenerInmueblesSimilares(tipo, banios, dormitorios, area);
+		
+		return results;
+	}
 	
 
 	

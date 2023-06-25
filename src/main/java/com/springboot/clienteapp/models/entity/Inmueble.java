@@ -51,6 +51,31 @@ public class Inmueble implements Serializable {
 	public Integer getIdInmueble() {
 		return id_Inmueble;
 	}
+		
+	
+	
+
+	public Inmueble() {
+		super();
+	}
+
+
+
+
+	public Inmueble(Integer id_Inmueble, @NotNull Integer area, @NotEmpty String tipo, @NotEmpty String sector,
+			@NotNull Integer dormitorios, Integer banios, @DecimalMin("0.0") Float precio) {
+		super();
+		this.id_Inmueble = id_Inmueble;
+		this.area = area;
+		this.tipo = tipo;
+		this.sector = sector;
+		this.dormitorios = dormitorios;
+		this.banios = banios;
+		this.precio = precio;
+	}
+
+
+
 
 	public void setIdInmueble(Integer idInmueble) {
 		this.id_Inmueble = idInmueble;

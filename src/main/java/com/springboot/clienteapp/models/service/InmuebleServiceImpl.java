@@ -1,6 +1,7 @@
 package com.springboot.clienteapp.models.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,5 +60,59 @@ public class InmuebleServiceImpl implements IInmuebleService {
 	    System.out.print(inmueblesFiltrados.toString());
 	    return inmueblesFiltrados;
 	}
+
+	//@Override
+	/*public List<Inmueble> listarInmueblesPorMetro(String tipo, String sector, int metro) {
+	    List<Inmueble> misInmuebles = (List<Inmueble>) inmuebleRepository.findAll();
+	    List<Inmueble> inmueblesFiltrados = new ArrayList<>();
+
+	    for (Inmueble inmueble : misInmuebles) {
+	        int pre = Math.round(inmueble.getPrecio());
+	        int ar = inmueble.getArea();
+	        int metroC = pre / ar;
+	        System.out.println(metroC);
+	        
+	        System.out.println("tipo----"+inmueble.getTipo());
+	        System.out.println("sector----"+inmueble.getSector());
+	        
+	        if (inmueble.getTipo().equals("casa") && inmueble.getSector().equals("Nayon")) {
+	            inmueblesFiltrados.add(inmueble);
+	        }
+	    }
+
+	    System.out.print("pruebas ------ " + inmueblesFiltrados.toString());
+	    return inmueblesFiltrados;
+	}*/
+	
+	@Override
+	public List<Inmueble> listarInmueblesPorMetro(String tipo, String sector, float metro) {
+	   
+		List<Inmueble> misInmuebles = (List<Inmueble>) inmuebleRepository.findAll();
+	    List<Inmueble> inmueblesFiltrados = new ArrayList<>();
+	    float pre = 0;
+	    float ar = 0;
+	    float metroC = 0;
+	    
+	    Inmueble cl = new Inmueble();
+	    
+	    for (Inmueble inmueble : misInmuebles) {
+	    	 pre = inmueble.getPrecio();
+	         ar = inmueble.getArea();
+	         metroC= pre / ar;
+	        System.out.println(metroC);
+	        
+	        if (inmueble.getTipo().equals(tipo) && inmueble.getSector().equals(sector) ) {
+		         inmueblesFiltrados.add(inmueble);
+		    }
+	        
+	        
+	        
+	    }
+	    
+	    System.out.print("pruebas--------"+inmueblesFiltrados.toString());
+	    return inmueblesFiltrados;
+	}
+
+
 
 }

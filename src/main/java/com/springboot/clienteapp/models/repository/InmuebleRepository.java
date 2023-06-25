@@ -25,6 +25,16 @@ public interface InmuebleRepository extends CrudRepository<Inmueble, Integer> {
 
 	 @Query(value = "SELECT @cantidad AS cantidad, @sectores AS sectores;", nativeQuery = true)
 	 Map<String, Object> obtenerResultadoCantidadSectores();
+	 
+	 
+	 //----------------------------------------------------------------------------------------------
+	 
+	 @Transactional
+	 @Query(value = "CALL ObtenerInmueblesSimilares(:tipo, :banios, :dormitorios, :area,  @id_Inmueble, @precio, @sector);", nativeQuery = true)
+	 List<Object[]> ObtenerInmueblesSimilares(@Param("tipo") String tipo, @Param("banios") int banios, @Param("dormitorios") int dormitorios, @Param("area") int area);
+
+	 @Query(value = "SELECT @id_Inmueble AS @id_Inmueble, @precio AS @precio, @sector AS @sector;", nativeQuery = true)
+	 Map<String, Object> ObtenerInmueblesSimilares();
 
 	    
 }

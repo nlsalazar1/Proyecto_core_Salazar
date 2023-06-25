@@ -15,4 +15,6 @@ public interface IInmuebleService {
 	public void eliminar(Integer idInmueble);
 	
 	public List<Inmueble> listarInmueblesPorClienteId(Long clientes_Id);
+	
+	public List<Inmueble> listarInmueblesPorMetro(String tipo, String sector, float metro);
 }

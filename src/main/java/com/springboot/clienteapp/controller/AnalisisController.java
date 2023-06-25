@@ -33,6 +33,9 @@ public class AnalisisController {
 	@Autowired
 	private IPublicacionService publicacionService;
 	
+	@Autowired 
+	private IInmuebleService inmuebleService; //importamos un objeto IInmuebleService
+	
 	/*@GetMapping("/")   // funciona envia los datos directo al html
     public String obtenerCantidadInmueblesPorSector(Model model) {
         // Lógica para obtener los datos de cantidad de inmuebles por sector desde el repositorio
@@ -224,5 +227,42 @@ public class AnalisisController {
 		
 		return "/views/analisis/Grafico2";
 	}
+	
+	
+// ==========================    Similares   ==========================================
+	
+
+	@GetMapping("/displayBasicAreaVacio")
+	public String basicAreaVacio(Model model) {
+		
+		/*String tipo = "Casa";
+		int banios = 2;
+		int dormitorios = 3;
+		int area = 50;
+		
+		
+	    List<Object[]> results = publicacionService.ObtenerInmueblesSimilares(tipo, banios, dormitorios, area);
+	    
+	    List<Inmueble> listaInmuebles = new ArrayList<>();
+	    
+	    for (Object[] result : results) {
+	        Integer idInmueble = (Integer) result[1];
+	        Float precio = (Float) result[2];
+	        String sector = (String) result[0];
+	        
+	        // Crear objeto Inmueble y agregarlo a la lista
+	        Inmueble inmueble = new Inmueble(idInmueble, area, tipo, sector, dormitorios, banios, precio);
+	        listaInmuebles.add(inmueble);
+	    }
+	    
+	    // Agregar la lista al modelo
+	    model.addAttribute("listaInmuebles", listaInmuebles);*/
+	    
+	    return "/views/analisis/Grafico3";
+	}
+
+	
+	
+	
 	
 }
