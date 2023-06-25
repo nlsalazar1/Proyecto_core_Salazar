@@ -25,7 +25,11 @@
 	    
 	        <div class="inmueble" th:each="inm : ${inmuebles}">
 				<div class="nombre" th:text="${inm.tipo + ' en ' + inm.sector + ' de ' + inm.area}"></div>
-				<img class="imgCasa" src="/images/icoCasa.png" alt="Imagen del Inmueble">
+				<!-- img class="imagen-casas" src="/images/otraCasa.png" alt="Imagen del Inmueble"-->
+				<div >
+					<img th:src="@{/images/anuncio4.jpg}" width="auto" height="auto" class="center">				
+				</div>
+				
 	            <div class="info">
 	                <div class="titulo">Precio: <span th:text="${inm.precio}"></span></div>
 	                <div class="titulo">Sector: <span th:text="${inm.sector}"></span></div>

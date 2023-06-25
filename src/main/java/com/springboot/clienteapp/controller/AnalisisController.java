@@ -33,7 +33,7 @@ public class AnalisisController {
 	@Autowired
 	private IPublicacionService publicacionService;
 	
-	@GetMapping("/")   // funciona envia los datos directo al html
+	/*@GetMapping("/")   // funciona envia los datos directo al html
     public String obtenerCantidadInmueblesPorSector(Model model) {
         // Lógica para obtener los datos de cantidad de inmuebles por sector desde el repositorio
         
@@ -58,7 +58,7 @@ public class AnalisisController {
         
         
         //return listaSectores;
-    }
+    }*/
 	
 	
 	@GetMapping("/mostrardisplayBarGraph")    //funciona
@@ -84,6 +84,41 @@ public class AnalisisController {
 		
 		return "/views/analisis/AnalisisGraficas";
 	}
+	
+	
+	
+	
+	
+	@GetMapping("/edit/{tipo}/{valor_min}/{valor_max}")// funciona envia los datos directo al html
+    public String obtenerCantidadInmueblesPorSector(@PathVariable("tipo") String tipo, @PathVariable("valor_min") float valor_min, @PathVariable("valor_max") float valor_max, Model model) {
+        // Lógica para obtener los datos de cantidad de inmuebles por sector desde el repositorio
+        
+		List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector(tipo, valor_min, valor_max);
+        
+		List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
+
+		Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
+
+		for (Object[] result : results) {
+            String sector = (String) result[0];
+            BigInteger cantidad = (BigInteger) result[1];
+            
+            
+            surveyMap.put(sector, cantidad);
+            //InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+            //listaSectores.add(inmuebleCantidadSectorDTO);
+        }
+		
+		model.addAttribute("surveyMap", surveyMap);
+		
+		return "/views/analisis/AnalisisGraficas";
+        
+        
+        //return listaSectores;
+    }
+	
+	
+	
 	
 	
 	
@@ -118,20 +153,23 @@ public class AnalisisController {
 	
 	@GetMapping("/displayBarGraph/{tipo}/{valor_min}/{valor_max}")
 	public String barGraph(@PathVariable("tipo") String tipo, @PathVariable("valor_min") float valor_min, @PathVariable("valor_max") float valor_max, Model model) {
-	    List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector(tipo, valor_min, valor_max);
+		List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
+        
+		List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
 
-	    List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
-	    Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
+		Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
 
-	    for (Object[] result : results) {
-	        String sector = (String) result[0];
-	        BigInteger cantidad = (BigInteger) result[1];
-	        surveyMap.put(sector, cantidad);
-	        //InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
-	        //listaSectores.add(inmuebleCantidadSectorDTO);
-	    }
-
-	    model.addAttribute("surveyMap", surveyMap);
+		for (Object[] result : results) {
+            String sector = (String) result[0];
+            BigInteger cantidad = (BigInteger) result[1];
+            
+            
+            surveyMap.put(sector, cantidad);
+            //InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+            //listaSectores.add(inmuebleCantidadSectorDTO);
+        }
+		
+		model.addAttribute("surveyMap", surveyMap);
 
 	    return "/views/analisis/AnalisisGraficas";
 	}
@@ -139,15 +177,52 @@ public class AnalisisController {
 	
 		
 	
-	
-	
+	@GetMapping("/displayPieChart/{tipo}/{valor_min}/{valor_max}")
+	public String pieChart(@PathVariable("tipo") String tipo, @PathVariable("valor_min") float valor_min, @PathVariable("valor_max") float valor_max, Model model) {
+		
+		
+		  List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector(tipo, valor_min, valor_max);
 
-	@GetMapping("/displayPieChart")
-	public String pieChart(Model model) {
-		model.addAttribute("pass", 20);
-		model.addAttribute("fail", 80);
+		    List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
+		    Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
+
+		    for (Object[] result : results) {
+		        String sector = (String) result[0];
+		        BigInteger cantidad = (BigInteger) result[1];
+		        surveyMap.put(sector, cantidad);
+		        //InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+		        //listaSectores.add(inmuebleCantidadSectorDTO);
+		    }
+
+		    model.addAttribute("surveyMap", surveyMap);
+		
+		
 		return "/views/analisis/Grafico2";
 	}
 	
+		
+
+	@GetMapping("/displayPieChartVacio")
+	public String pieChartVacio(Model model) {
+		
+		
+		  List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("Apartamento", 100000, 300000);
+
+		    List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
+		    Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
+
+		    for (Object[] result : results) {
+		        String sector = (String) result[0];
+		        BigInteger cantidad = (BigInteger) result[1];
+		        surveyMap.put(sector, cantidad);
+		        //InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
+		        //listaSectores.add(inmuebleCantidadSectorDTO);
+		    }
+
+		    model.addAttribute("surveyMap", surveyMap);
+		
+		
+		return "/views/analisis/Grafico2";
+	}
 	
 }

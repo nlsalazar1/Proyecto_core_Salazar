@@ -61,25 +61,12 @@ public class IpublicacionServiceImpl implements IPublicacionService {
         
 		List<Object[]> results = inmuebleRepository.obtenerCantidadInmueblesConSector(tipo, precioMin, precioMax);
 		
-		/*List<InmuebleCantidadSectorDTO> listaSectores = new ArrayList<>();
-
-		for (Object[] result : results) {
-		    String sector = (String) result[0];
-		    BigInteger cantidad = (BigInteger) result[1];
-		    InmuebleCantidadSectorDTO inmuebleCantidadSectorDTO = new InmuebleCantidadSectorDTO(sector, cantidad);
-		    listaSectores.add(inmuebleCantidadSectorDTO);
-		}
-
-		for (InmuebleCantidadSectorDTO inmueble : listaSectores) {
-		    System.out.println("Sector: " + inmueble.getSector());
-		    System.out.println("Cantidad: " + inmueble.getCantidad());
-		}*/
 		return results;
         
     }
 	
 
-
+	
 	
 	
 

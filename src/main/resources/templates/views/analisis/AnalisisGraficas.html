@@ -50,8 +50,8 @@
 									  
 						
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				<a class="dropdown-item" href="@{/views/analisis/displayBarGraph}">Barras</a>
-				<a class="dropdown-item" th:href="@{/views/analisis/displayPieChart}">Pastel</a>
+				<a class="dropdown-item" th:href="@{/views/analisis/AnalisisGraficas}">Barras</a>
+				<a class="dropdown-item" th:href="@{/views/analisis/displayPieChartVacio}">Pastel</a>
 				<a class="dropdown-item" href="#">Otro</a>				
 						    
 			</div>
@@ -60,14 +60,14 @@
 	</ul>
 	
 	<div>
-		<form th:action="@{/views/analisis/displayBarGraph}" th:object="${InmuebleCantidadSectorDTO}" method="post">
+		<!-- form th:action="@{/views/analisis/displayBarGraph}" th:object="${InmuebleCantidadSectorDTO}" method="post"-->
 		
-		    <select id="precio" name="precio">
+		    <!-- select id="precio" name="precio">
 		        <option value="0-50000">0 - 50000</option>
 		        <option value="50001-100000">50001 - 100000</option>
 		        <option value="100001-150000">100001 - 150000</option>
 		        <option value="150001-200000">150001 - 200000</option>
-		    </select>
+		    </select-->
 		    
 		     <!-- div class="form-group-row">
 			      <label for="valor_min" class="col-md-2 form-label">Valor minimo:</label>
@@ -86,17 +86,15 @@
 		        <option value="Apartamento">Apartamento</option>
 		    </select>
 		
-		 <!-- div class="card-footer bg-dark">
-			 <input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
-		 </div-->
+		    <input type="number" id="valor_min" placeholder="Ingrese valor mínimo">
+		    <input type="number" id="valor_max" placeholder="Ingrese valor máximo">
 		
-			<a class="btn btn-primary" th:href="@{/views/analisis/displayBarGraph/{tipo}/{valor_min}/{valor_max}(tipo=${tipo}, valor_min=${valorMin}, valor_max=${valorMax})}" onclick="actualizarPrecio()" title="Actualizar Precio">Actualizar Precio</a>
-		</form>
-	</div>
+		    <a class="btn btn-primary" onclick="actualizarPrecio()" title="Actualizar Precio">Actualizar Precio</a>
+</div>
 	
 
 
-	<div id="container1" style="height: 400px"></div>
+	<div id="container1" style="width: 800px; height: 400px; font-size: 20px;"></div>
 		<script th:inline="javascript">
 			$(function(){
 		    var surveyMapKeys = [[${surveyMap.keySet()}]];
@@ -126,9 +124,9 @@
 		            }
 		        },
 		        tooltip: {
-		            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-		            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-		            '<td style="padding:0"><b>{point.y:.1f} K</b></td></tr>',
+		            headerFormat: '<span style="font-size:40px">{point.key}</span><table>',
+		            pointFormat: '<tr><td style="color:{series.color};padding:0">Inmuebles: </td>' +
+		            '<td style="padding:0"> <b>{point.y:.0f}</b></td></tr>',
 		            footerFormat: '</table>',
 		            shared: true,
 		            useHTML: true
@@ -136,7 +134,7 @@
 		        plotOptions: {
 		            column: {
 		                pointPadding: 0.2,
-		                borderWidth: 0
+		                borderWidth: 5
 		            }
 		        },
 		        series: [{
@@ -150,18 +148,14 @@
 		
 
 	<script>
-		function actualizarPrecio() {
-		    //var tipo = document.getElementById("tipo").value;
-		    var tipo = document.getElementById("casa").value;
-		    var precio = document.getElementById("precio").value;
-		    var valores = precio.split("-");
-		    var valorMin = parseFloat(valores[0]);
-		    var valorMax = parseFloat(valores[1]);
+	    function actualizarPrecio() {
+	        var tipo = document.getElementById('tipo').value;
+	        var valorMin = document.getElementById('valor_min').value;
+	        var valorMax = document.getElementById('valor_max').value;
 	
-		    // Redirigir a la URL del controlador con los parámetros adecuados
-		    window.location.href = "/views/analisis/displayBarGraph?tipo=" + tipo + "&valor_min=" + 50000 + "&valor_max=" + 200000;
-		}
-
+	        var url = '/views/analisis/edit/' + tipo + '/' + valorMin + '/' + valorMax;
+	        window.location.href = url;
+	    }
 	</script>
 
 

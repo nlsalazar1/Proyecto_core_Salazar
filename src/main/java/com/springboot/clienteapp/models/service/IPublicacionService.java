@@ -21,4 +21,6 @@ public interface IPublicacionService {
 	public List<Publicacion> listarPublicacionesPorInmuebleId(Integer inmuebles_Id);
 	
 	public List<Object[]> obtenerCantidadInmueblesConSector(String tipo, float precioMin, float precioMax);
+	
+	public List<Object[]> obtenerTodasLasPublicacionesFecha();
 }

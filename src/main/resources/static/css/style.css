@@ -426,3 +426,8 @@ textarea{
     font-size: 14px;
     font-weight: bold;
  }
+
+ .imagen-casas{
+    background-image: url(/images/casaLocal.png);
+ }
+ 
