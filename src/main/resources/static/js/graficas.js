@@ -1,7 +1,7 @@
 
 // Variable global para almacenar los datos JSON
 
-/*function recibirDatosDesdeControlador() {
+function recibirDatosDesdeControlador() {
     fetch('/sectores')
         .then(response => response.json())
         .then(data => {
@@ -15,9 +15,9 @@
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
-}*/
+}
     var datosInmuebles = [];/* Aquí asigna el valor de los datos recibidos del controlador */;
-
+/*
 document.addEventListener('DOMContentLoaded', function () {
     fetch('/sectores')
         .then(response => response.json())
@@ -92,10 +92,10 @@ document.addEventListener('DOMContentLoaded', function () {
         .catch(error => {
             console.error('Error al obtener los datos:', error);
         });
-});
+});*/
 
 
-
+/*
 document.addEventListener('DOMContentLoaded', function () {
 	        const chart = // Data retrieved from https://fas.org/issues/nuclear-weapons/status-world-nuclear-forces/
 	        	Highcharts.chart('basicArea', {
@@ -170,8 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	        	});
 	    });
 	    
-	    
-	    
+	    */	    
 //==============================================================================================================
 
 

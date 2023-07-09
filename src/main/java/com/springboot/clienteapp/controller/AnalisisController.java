@@ -25,6 +25,8 @@ import com.springboot.clienteapp.models.entity.InmuebleCantidadSectorDTO;
 import com.springboot.clienteapp.models.service.IInmuebleService;
 import com.springboot.clienteapp.models.service.IPublicacionService;
 
+
+
 @Controller
 @RequestMapping("/views/analisis")
 public class AnalisisController {
@@ -261,8 +263,6 @@ public class AnalisisController {
 	    return "/views/analisis/Grafico3";
 	}
 
-	
-	
 	
 	
 }
