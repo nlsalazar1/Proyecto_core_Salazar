@@ -95,43 +95,36 @@ public class ApiRestController {
         return ResponseEntity.ok(surveyMap);
     }
 
-    @GetMapping("/displayPieChart/{tipo}/{valor_min}/{valor_max}")
-    public ResponseEntity<Map<String, BigInteger>> pieChart(
-            @PathVariable("tipo") String tipo,
-            @PathVariable("valor_min") float valor_min,
-            @PathVariable("valor_max") float valor_max
-    ) {
-        List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector(tipo, valor_min, valor_max);
+    @GetMapping("/displayMetroCuadrado/{tipo}/{sector1}/{sector2}/{sector3}/{valor_mc}")
+	public ResponseEntity<List<Inmueble>> pieChart(@PathVariable("tipo") String tipo, @PathVariable("sector1") String sector1, @PathVariable("sector2") String sector2, @PathVariable("sector3") String sector3, @PathVariable("valor_mc") int valor_mc, Model model) {
+		
+		//List<Cliente> listClientes = clienteService.listarTodos();
+		
+		System.out.println(tipo + " "+ sector1+ " " + valor_mc);
+		List<Inmueble> listadoInmuebles = inmuebleService.listarInmueblesPorMetro(tipo, sector1, valor_mc);
+		
+		List<Inmueble> listadoInmuebles2 = inmuebleService.listarInmueblesPorMetro(tipo, sector2, valor_mc);
+		
+		List<Inmueble> listadoInmuebles3 = inmuebleService.listarInmueblesPorMetro(tipo, sector3, valor_mc);
+		   
+		// Imprimir los valores utilizando toString()
+	    System.out.println("listadoInmuebles: " + listadoInmuebles.toString());
+	    System.out.println("listadoInmuebles2: " + listadoInmuebles2.toString());
+	    System.out.println("listadoInmuebles3: " + listadoInmuebles3.toString());
 
-        Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
-
-        for (Object[] result : results) {
-            String sector = (String) result[0];
-            BigInteger cantidad = (BigInteger) result[1];
-            surveyMap.put(sector, cantidad);
-        }
-
-        return ResponseEntity.ok(surveyMap);
-    }
-
-    @GetMapping("/displayPieChartVacio")
-    public ResponseEntity<Map<String, BigInteger>> pieChartVacio() {
-        List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("Apartamento", 100000, 300000);
-
-        Map<String, BigInteger> surveyMap = new LinkedHashMap<>();
-
-        for (Object[] result : results) {
-            String sector = (String) result[0];
-            BigInteger cantidad = (BigInteger) result[1];
-            surveyMap.put(sector, cantidad);
-        }
-
-        return ResponseEntity.ok(surveyMap);
-    }
-
-    @GetMapping("/displayBasicAreaVacio")
-    public ResponseEntity<Object> basicAreaVacio() {
-        return ResponseEntity.ok().build();
-    }
+	    
+	    List<Inmueble> listaFinal = new ArrayList<>();
+	    
+	    listaFinal.addAll(listadoInmuebles);
+	    listaFinal.addAll(listadoInmuebles2);
+	    listaFinal.addAll(listadoInmuebles3);
+		
+		
+		    model.addAttribute("titulo", "Lista de Inmuebles del Cliente");
+		    model.addAttribute("inmuebles", listaFinal);
+		
+		return ResponseEntity.ok(listaFinal);
+		//return "/views/analisis/Grafico3";
+	}
 
 }
