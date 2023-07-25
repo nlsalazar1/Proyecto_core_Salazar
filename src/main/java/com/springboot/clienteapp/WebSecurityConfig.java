@@ -6,15 +6,17 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+/*import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
+*/
 import com.springboot.clienteapp.util.LoginSuccessMessage;
 
-@EnableGlobalMethodSecurity(securedEnabled=true) // video 12 seguridad - para dar los permisos USER O ADMIN
+public class WebSecurityConfig{
+
+/*@EnableGlobalMethodSecurity(securedEnabled=true) // video 12 seguridad - para dar los permisos USER O ADMIN
 @Configuration
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
@@ -25,15 +27,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	private BCryptPasswordEncoder PassEncoder;	
 	
 	@Autowired
-	private LoginSuccessMessage successMessage;
+	private LoginSuccessMessage successMessage;*/
 	
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {  // Le damos los permisos de acuerdo al rol (user o admin)
+	//@Override
+	//protected void configure(HttpSecurity http) throws Exception {  // Le damos los permisos de acuerdo al rol (user o admin)
 		
-		http.authorizeRequests()
-		.antMatchers("/","/home","/index","/css/**","/js/**","/images/**","//").permitAll()
-		.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-        .regexMatchers("^.*//.*$").permitAll() // Permitir URLs que contengan "//"       
+		//http.authorizeRequests()
+		//.antMatchers("/","/home","/index","/css/**","/js/**","/images/**","//").permitAll()
+		//.requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+        //.regexMatchers("^./.*$").permitAll() // Permitir URLs que contengan "//"       
 		//.antMatchers("/views/clientes/").hasAnyRole("USER")  //le damos permiso de ver solo la lista de clientes
 		//.antMatchers("/views/clientes/").hasAnyRole("ADMIN")
 		/*.antMatchers("/views/clientes/create").hasAnyRole("ADMIN")
@@ -47,17 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/views/inmuebles/edit/**").hasAnyRole("ADMIN")   //Revisamos en Cliente Controller que necesitan los metodo
 		.antMatchers("/views/inmuebles/delete/**").hasAnyRole("ADMIN")
 		.antMatchers("/views/clientes/inmueblesCli/").hasAnyRole("ADMIN")*/
-		.anyRequest().authenticated()
-		.and()
-		.formLogin()
-			.successHandler(successMessage)
-			.loginPage("/login")
-		.permitAll()
-		.and()
-		.logout().permitAll();
-	}
+		//.anyRequest().authenticated()
+		//.and()
+		//.formLogin()
+		//	.successHandler(successMessage)
+		//	.loginPage("/login")
+		//.permitAll()
+		//.and()
+		//.logout().permitAll();
+	//}
 
-
+/*
 	@Autowired
 	public void configureSecurityGlobal(AuthenticationManagerBuilder buider) {
 		try {
@@ -70,6 +72,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	//Verificamos el rol del Usuario
-	}
+	}*/
 	
 }

@@ -4,14 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class SpringbootClienteappApplication implements CommandLineRunner{  // para encriptar usamos  "implements CommandLineRunner"
 
 	//Usamos para probar la encriptacion
-	@Autowired
-	private BCryptPasswordEncoder passEncoder;
+	//@Autowired
+	//private BCryptPasswordEncoder passEncoder;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootClienteappApplication.class, args);
@@ -27,7 +27,7 @@ public class SpringbootClienteappApplication implements CommandLineRunner{  // p
 		String pass2 = "client";
 		
 		//System.out.println(passEncoder.encode(pass1));
-		System.out.println(passEncoder.encode(pass2));		
+		//System.out.println(passEncoder.encode(pass2));		
 		
 	}
 
