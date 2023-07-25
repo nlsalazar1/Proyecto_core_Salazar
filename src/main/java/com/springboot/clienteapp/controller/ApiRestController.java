@@ -35,8 +35,7 @@ public class ApiRestController {
 	
 	@Autowired 
 	private IInmuebleService inmuebleService; //importamos un objeto IInmuebleService
-	
-	
+		
 		
 	@GetMapping("/apiInmuebles")
 	public ResponseEntity<List<Inmueble>> apibarGraph() {
@@ -44,7 +43,7 @@ public class ApiRestController {
 	    return ResponseEntity.ok(listadoInmuebles);
 	}
 	
-	@GetMapping("/cantidadInmueblesPorSector")
+	@GetMapping("/cantidadInmueblesPorValor")
     public ResponseEntity<List<InmuebleCantidadSectorDTO>> obtenerCantidadInmueblesPorSector() {
         List<Object[]> results = publicacionService.obtenerCantidadInmueblesConSector("casa", 200000, 300000);
 

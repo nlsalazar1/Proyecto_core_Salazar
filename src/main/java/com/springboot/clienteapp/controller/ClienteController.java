@@ -48,7 +48,7 @@ public class ClienteController {
 	private IPublicacionService publicacionService;
 	
 	
-	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad - hay que avilitar la anotacion en WebSecurityConfig
+	//@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad - hay que avilitar la anotacion en WebSecurityConfig
 	@GetMapping("/")
 	public String listarClientes(Model model) {
 		
@@ -59,7 +59,7 @@ public class ClienteController {
 		return "/views/clientes/listar";
 	}
 	
-	@Secured("ROLE_ADMIN") //video 12 seguridad
+	//@Secured("ROLE_ADMIN") //video 12 seguridad
 	@GetMapping("/create") 
 	public String crear(Model model){
 		
@@ -73,7 +73,7 @@ public class ClienteController {
 		return "/views/clientes/frmCrear";
 	}
 	
-	@Secured("ROLE_ADMIN") //video 12 seguridad
+	//@Secured("ROLE_ADMIN") //video 12 seguridad
 	@PostMapping("/save")
 	public String guardar(@Valid @ModelAttribute Cliente cliente, BindingResult result, //@BindigResult captura los errores del formulario 
 			Model model, RedirectAttributes attribute) { //RedirectAttributes utilizamos para dar los mensajes de exito o error de la plantilla - video 14 crud
@@ -98,7 +98,7 @@ public class ClienteController {
 		return "redirect:/views/clientes/";
 	}
 	
-	@Secured("ROLE_ADMIN") //video 12 seguridad
+	//@Secured("ROLE_ADMIN") //video 12 seguridad
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Long idCliente, Model model, RedirectAttributes attribute){
 		
@@ -128,7 +128,7 @@ public class ClienteController {
 		return "/views/clientes/frmCrear";
 	}
 	
-	@Secured("ROLE_ADMIN") //video 12 seguridad
+	//@Secured("ROLE_ADMIN") //video 12 seguridad
 	@GetMapping("/delete/{id}")
 	public String eliminar(@PathVariable("id") Long idCliente, RedirectAttributes attribute){
 		
@@ -161,7 +161,7 @@ public class ClienteController {
 	
 	//-------------------------------------------------------------------------------------
 	
-	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
+	//@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
 	@GetMapping("/inmueblesCli/{clientes_Id}")
 	public String listarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
 	    
@@ -173,7 +173,7 @@ public class ClienteController {
 	}
 	
 	
-	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
+	//@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
 	@GetMapping("/inmueblesCliImg/{clientes_Id}")
 	public String mostrarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
 	    

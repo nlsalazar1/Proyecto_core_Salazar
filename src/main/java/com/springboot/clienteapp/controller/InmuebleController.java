@@ -49,7 +49,7 @@ public class InmuebleController {
 		return "/views/inmuebles/listarinm";
 	}
 	
-	@Secured("ROLE_ADMIN")
+	//@Secured("ROLE_ADMIN")
 	@GetMapping("/create")
 	public String crear(Model model){
 		
@@ -85,7 +85,7 @@ public class InmuebleController {
 		return "redirect:/views/inmuebles/";
 	}
 	
-	@Secured("ROLE_ADMIN")
+	//@Secured("ROLE_ADMIN")
 	@GetMapping("/edit/{id}")
 	public String editar(@PathVariable("id") Integer idInmueble, Model model){
 		
@@ -99,7 +99,7 @@ public class InmuebleController {
 		return "/views/inmuebles/frmCrearinm";
 	}
 	
-	@Secured("ROLE_ADMIN")
+	//@Secured("ROLE_ADMIN")
 	@GetMapping("/delete/{idInmueble}")
 	public String eliminar(@PathVariable("idInmueble") Integer idInmueble){
 		
@@ -112,7 +112,7 @@ public class InmuebleController {
 	
 	//-----------------------------------------------------------------------------------------------------------
 	
-	@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
+	//@Secured({"ROLE_ADMIN", "ROLE_USER"}) //video 12 seguridad
 	@GetMapping("/inmueblesCliImg/{clientes_Id}")
 	public String mostrarInmueblesPorCliente(@PathVariable("clientes_Id") Long clientes_Id, Model model) {
 	    

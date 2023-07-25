@@ -65,6 +65,10 @@ public class AnalisisController {
         //return listaSectores;
     }*/
 	
+	@GetMapping("/apilist")
+	public String apis() {
+		return "/views/APIs/ApisList";
+	}
 	
 	@GetMapping("/mostrardisplayBarGraph")    //funciona
 	public String barGraph(Model model) {
