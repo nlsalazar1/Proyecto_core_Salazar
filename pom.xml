@@ -28,11 +28,11 @@
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
 		</dependency>
 		
-		<!-- ... dependencia para usar spring security ... 
+		<!-- ... dependencia para usar spring security ... -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>-->
+		</dependency>
 		
 		<!-- Dependencia para usar las validaciones -->
 		 <dependency>
