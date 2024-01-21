@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	 <!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security"> <!-- Usamos para realizar el logout, mirar la documentacion de thymeleaf en security -->
+
+<head th:fragment="head">
+<meta charset="UTF-8">
+<title>Mini CORE</title>
+	
+	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+	<link rel="stylesheet" th:href="@{/css/signin.css}">
+	<link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+
+</head>
+<body>
+	
+	<!--  Barra de Navegación -->
+	<header th:fragment="header">
+
+		<!--  BARRA DE NAVEGACION DE BOOSTRAP -->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+				<a class="navbar-brand" href="#">
+				<strong>Mini CORE</strong>
+				</a>
+				
+				<!-- ENLACES DEL MENU -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active">
+							<a class="nav-link" th:href="@{/index}">Inicio
+								
+							</a>
+						</li>
+						<li class="nav-item"> <!-- video seguridad 11  sec:authorize="isAuthenticated()" -->
+							<a class="nav-link"th:href="@{/views/clientes/}">Clientes</a>
+						</li>
+						<li class="nav-item" > <!-- video seguridad 11 sec:authorize="isAuthenticated()"-->
+							<a class="nav-link"th:href="@{/views/inmuebles/}">Inmuebles</a>
+						</li>
+						<li class="nav-item" > <!-- video seguridad 11 sec:authorize="isAuthenticated()"-->
+							<a class="nav-link"th:href="@{/views/analisis/mostrardisplayBarGraph}">Estadística</a>
+						</li>
+						<li class="nav-item">
+						    <a class="nav-link" th:href="@{/views/analisis/apilist}" target="_blank">APIs</a>
+						</li>
+
+					</ul>
+									
+				</div>
+			</div>
+		</nav>
+		
+		<!-- MENSAJES 
+		<div class="alert alert-success alert-dismissable" th:if="${success != null}">
+			<label th:text="${success}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		<div class="alert alert-danger alert-dismissable" th:if="${error != null}">
+			<label th:text="${error}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		<div class="alert alert-warning alert-dismissable" th:if="${warning != null}">
+			<label th:text="${warning}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>
+		<div class="alert alert-info alert-dismissable" th:if="${info != null}">
+			<label th:text="${info}"></label>
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+		</div>-->
+
+	</header>
+
+	<!--  Contenido -->
+	<div class="container"></div>
+
+	<!--  Pie de pagina -->
+	<footer th:fragment="footer" class="bg-dark text-center text-white fixed-bottom">
+
+		<div class="container">
+			<p>Contenido</p>
+		</div>
+		<script type="text/javascript" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+	</footer>
+</body>
+</html>

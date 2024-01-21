@@ -1,0 +1,39 @@
+<! DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<!--xmlns:sec="http://www.thymeleaf.org/extras/spring-security">  Usamos para realizar el logout, mirar la documentacion de thymeleaf en security -->
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+	</div>
+
+	<div class="container">
+	
+	
+	<div>
+					<ul>
+						<li class="">
+							<a class="" th:href="@{/index}">Inicio
+								
+							</a>
+						</li>
+						<li class=""> <!-- video seguridad 11  sec:authorize="isAuthenticated()" -->
+							<a class=""th:href="@{/APIanalisis/apiInmuebles}">ApiAll</a>
+						</li>
+						<li class="">
+						    <a class="" th:href="@{/APIanalisis/cantidadInmueblesPorValor}" target="_blank">APIs por valor</a>
+						</li>
+
+					</ul>
+									
+				</div>
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

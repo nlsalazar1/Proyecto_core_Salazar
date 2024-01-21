@@ -1,0 +1,232 @@
+-- Registro 1
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (1, 'Pedro', 'González', '123456789', 'pedro@example.com', 1);
+
+-- Registro 2
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (2, 'María', 'López', '987654321', 'maria@example.com', 2);
+
+-- Registro 3
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (3, 'Carlos', 'Hernández', '555555555', 'carlos@example.com', 1);
+
+-- Registro 4
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (4, 'Ana', 'Martínez', '111111111', 'ana@example.com', 3);
+
+-- Registro 5
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (5, 'Sofía', 'Ramírez', '999999999', 'sofia@example.com', 2);
+
+-- Registro 6
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (6, 'Laura', 'García', '444444444', 'laura@example.com', 1);
+
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (7, 'Juan', 'Pérez', '123456789', 'juan@example.com', 1);
+
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (8, 'María', 'Gómez', '987654321', 'maria@example.com', 1);
+
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (9, 'Carlos', 'López', '555555555', 'carlos@example.com', 1);
+
+INSERT INTO clientes (id, nombres, apellidos, telefono, email, ciudades_id)
+VALUES (10, 'Ana', 'García', '999999999', 'ana@example.com', 1);
+
+
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 80, 'Apartamento', 'El Batán', 2, 1, 150000, 'Acogedor apartamento en venta');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 120, 'Casa', 'Iñaquito', 4, 3, 350000, 'Amplia casa con jardín');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (4, 90, 'Apartamento', 'Nayon', 1, 1, 120000, 'Lindo apartamento cerca del centro');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (1, 150, 'Casa', 'El Inca', 5, 4, 450000, 'Espaciosa casa con piscina');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 70, 'Apartamento', 'Sangolqui', 2, 1, 180000, 'Moderno apartamento con vistas');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (1, 110, 'Casa', 'San Carlos', 4, 3, 320000, 'Casa en esquina con patio');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (4, 95, 'Apartamento', 'Prensa', 2, 2, 140000, 'Apartamento luminoso en zona tranquila');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 130, 'Casa', 'Cotocollao', 6, 4, 550000, 'Amplia casa con acabados de lujo');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (1, 75, 'Apartamento', 'Carcelén', 1, 1, 100000, 'Apartamento ideal para parejas');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 85, 'Casa', 'Recreo', 3, 2, 280000, 'Casa remodelada con patio trasero');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 95, 'Apartamento', 'Quitumbe', 2, 1, 160000, 'Apartamento moderno con excelente ubicación');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (4, 120, 'Casa', 'La Mariscal', 4, 3, 380000, 'Casa colonial en el centro histórico');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (1, 70, 'Apartamento', 'El Batán', 1, 1, 130000, 'Apartamento acogedor con balcón');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (4, 140, 'Casa', 'Iñaquito', 5, 4, 480000, 'Casa con amplio jardín y zona de BBQ');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 105, 'Apartamento', 'Nayon', 3, 2, 200000, 'Apartamento con hermosa vista panorámica');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (4, 90, 'Casa', 'El Inca', 3, 2, 320000, 'Casa con diseño moderno y acabados de primera');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (1, 80, 'Apartamento', 'Sangolqui', 2, 1, 150000, 'Apartamento en urbanización segura');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 110, 'Casa', 'San Carlos', 4, 3, 340000, 'Casa de dos pisos con amplios espacios');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (3, 95, 'Apartamento', 'Prensa', 2, 2, 140000, 'Apartamento en zona residencial tranquila');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 85, 'Apartamento', 'El Batán', 2, 1, 160000, 'Apartamento con balcón y vista panorámica');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 100, 'Casa', 'Iñaquito', 3, 2, 290000, 'Casa en urbanización privada');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 95, 'Apartamento', 'Nayon', 2, 2, 180000, 'Apartamento con acabados modernos');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 110, 'Casa', 'El Inca', 4, 3, 350000, 'Casa con amplio jardín y área de BBQ');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 75, 'Apartamento', 'Sangolqui', 1, 1, 130000, 'Apartamento en conjunto residencial');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 130, 'Casa', 'San Carlos', 5, 4, 400000, 'Casa con piscina y área de entretenimiento');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 90, 'Apartamento', 'Prensa', 2, 1, 150000, 'Apartamento con seguridad las 24 horas');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 120, 'Casa', 'Cotocollao', 4, 3, 330000, 'Casa con diseño moderno y espacios amplios');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 80, 'Apartamento', 'Carcelén', 1, 1, 120000, 'Apartamento luminoso con buena ubicación');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 95, 'Casa', 'Recreo', 3, 2, 280000, 'Casa remodelada en zona residencial tranquila');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 110, 'Apartamento', 'Quitumbe', 3, 2, 190000, 'Apartamento con vista a la ciudad');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 140, 'Casa', 'La Mariscal', 5, 4, 420000, 'Casa con estilo colonial y patio interno');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 75, 'Apartamento', 'El Batán', 1, 1, 140000, 'Apartamento acogedor en edificio seguro');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 100, 'Casa', 'Iñaquito', 4, 3, 310000, 'Casa con área de juegos y jardín posterior');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 90, 'Apartamento', 'Nayon', 2, 1, 170000, 'Apartamento con excelente vista panorámica');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 105, 'Casa', 'El Inca', 3, 2, 330000, 'Casa con diseño moderno y acabados de calidad');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 80, 'Apartamento', 'Sangolqui', 2, 1, 160000, 'Apartamento en conjunto residencial seguro');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 110, 'Casa', 'San Carlos', 4, 3, 370000, 'Casa de dos pisos con amplios espacios');
+
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (6, 95, 'Apartamento', 'Prensa', 2, 2, 140000, 'Apartamento en zona residencial tranquila');
+
+-- Registro 1
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 80, 'Apartamento', 'El Batán', 2, 1, 150000, 'Acogedor apartamento en venta');
+
+-- Registro 2
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 120, 'Casa', 'Iñaquito', 4, 3, 350000, 'Amplia casa con jardín');
+
+-- Registro 3
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 90, 'Apartamento', 'Nayon', 1, 1, 120000, 'Lindo apartamento cerca del centro');
+
+-- Registro 4
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 150, 'Casa', 'El Inca', 5, 4, 450000, 'Espaciosa casa con piscina');
+
+-- Registro 5
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 70, 'Apartamento', 'Sangolqui', 2, 1, 180000, 'Moderno apartamento con vistas');
+
+-- Registro 6
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 110, 'Casa', 'San Carlos', 4, 3, 320000, 'Casa en esquina con patio');
+
+-- Registro 7
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 95, 'Apartamento', 'Prensa', 2, 2, 140000, 'Apartamento luminoso en zona tranquila');
+
+-- Registro 8
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 130, 'Casa', 'Cotocollao', 6, 4, 550000, 'Amplia casa con acabados de lujo');
+
+-- Registro 9
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 75, 'Apartamento', 'Carcelén', 1, 1, 100000, 'Apartamento ideal para parejas');
+
+-- Registro 10
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 85, 'Casa', 'Recreo', 3, 2, 280000, 'Casa remodelada con patio trasero');
+
+-- Registro 11
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 95, 'Apartamento', 'Quitumbe', 2, 1, 160000, 'Apartamento moderno con excelente ubicación');
+
+-- Registro 12
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 120, 'Casa', 'La Mariscal', 4, 3, 380000, 'Casa colonial en el centro histórico');
+
+-- Registro 13
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 70, 'Apartamento', 'El Batán', 1, 1, 130000, 'Apartamento acogedor con balcón');
+
+-- Registro 14
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 140, 'Casa', 'Iñaquito', 5, 4, 480000, 'Casa con amplio jardín y zona de BBQ');
+
+-- Registro 15
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 105, 'Apartamento', 'Nayon', 3, 2, 200000, 'Apartamento con hermosa vista panorámica');
+
+-- Registro 16
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (5, 90, 'Casa', 'El Inca', 3, 2, 320000, 'Casa con diseño moderno y acabados de primera');
+
+-- Registro 17
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (7, 80, 'Apartamento', 'Sangolqui', 2, 1, 150000, 'Apartamento en urbanización segura');
+
+-- Registro 18
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (8, 110, 'Casa', 'San Carlos', 4, 3, 340000, 'Casa de dos pisos con amplios espacios');
+
+-- Registro 19
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (9, 95, 'Apartamento', 'Prensa', 2, 2, 140000, 'Apartamento en zona residencial tranquila');
+
+-- Registro 20
+INSERT INTO inmuebles (clientes_id, area, tipo, sector, dormitorios, banios, precio, descripcion)
+VALUES (10, 120, 'Casa', 'Cotocollao', 5, 4, 400000, 'Casa con amplio patio y área de entretenimiento');
+

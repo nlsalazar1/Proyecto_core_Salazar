@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+
+	<div class="container">
+
+		<div class="card bg-light">
+		    <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+		    <div class="card-body formularioIngreso">
+		    
+		        <form th:action="@{/views/inmuebles/save}" th:object="${inmueble}" method="post">
+		            <div class="form-group-row">
+		                <input type="hidden" th:field="*{idInmueble}">
+		                <label for="area" class="col-md-2 form-label">Area:</label>
+		                <input type="text" th:field="*{area}" class="form-control form-control-sm col-md-6" id="area" placeholder="Area del inmueble">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('area')}" th:errors="*{area}"></small>
+		            </div>
+		            <div class="form-group-row">
+					    <label for="cliente" class="col-md-2 form-label">Cliente:</label> 
+					    <select th:field="*{cliente}" class="form-control form-control-sm col-md-6" id="cliente">
+					        <option value="" disabled selected>Cliente</option> <!-- Opción por defecto -->
+					        <option th:each="cliente : ${clientes}" th:value="${cliente.id}" th:text="${cliente.nombres}"></option>
+					    </select>
+					</div>
+		            <div class="form-group-row">
+		                <label for="tipo" class="col-md-2 form-label">Tipo:</label>
+		                <input type="text" th:field="*{tipo}" class="form-control form-control-sm col-md-6" id="tipo" placeholder="Tipo de inmueble">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}"></small>
+		            </div>
+		            <div class="form-group-row">
+		                <label for="sector" class="col-md-2 form-label">Sector:</label>
+		                <input type="text" th:field="*{sector}" class="form-control form-control-sm col-md-6" id="sector" placeholder="Sector">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}"></small>
+		            </div>
+		            <div class="form-group-row">
+		                <label for="dormitorios" class="col-md-2 form-label">Dormitorios:</label>
+		                <input type="text" th:field="*{dormitorios}" class="form-control form-control-sm col-md-6" id="dormitorios" placeholder="Dormitorios">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('dormitorios')}" th:errors="*{dormitorios}"></small>
+		            </div>
+		            <div class="form-group-row">
+		                <label for="banios" class="col-md-2 form-label">Baños:</label>
+		                <input type="text" th:field="*{banios}" class="form-control form-control-sm col-md-6" id="banios" placeholder="Baños">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('banios')}" th:errors="*{banios}"></small>
+		            </div>
+		            <div class="form-group-row">
+		                <label for="precio" class="col-md-2 form-label">Precio:</label>
+		                <input type="text" th:field="*{precio}" class="form-control form-control-sm col-md-6" id="precio" placeholder="Precio">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('precio')}" th:errors="*{precio}"></small>
+		            </div>
+		            <div class="form-group-row">
+		                <label for="descripcion" class="col-md-2 form-label">Descripcion:</label>
+		                <input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6" id="descripcion" placeholder="Descripcion">
+		                <small class="form-text text-danger" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}"></small>
+		            </div>
+		            <div class="card-footer bg-dark">
+		                <input type="submit" class="btn btn-primary btn-sm" value="Guardar" />
+		            </div>
+		        </form>
+		    </div>
+		</div>
+				
+
+	</div>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+
+</body>
+</html>

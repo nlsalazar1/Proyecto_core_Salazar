@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="plantilla/template :: head">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Bienes Raices</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/normalize.css">
+	<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+	<header class="site-header inicio">
+        <!-- Contenido del encabezado -->
+        <div th:replace="plantilla/template :: header"></div>
+        
+        <div class="contenedor contenido-header">
+            <div class="barra">
+         	<a href="/">
+            	<img th:src="@{images/logo.svg}" alt="Logotipo de Bienes Raices">
+            </a>
+                
+	        </div>
+
+            <h1>Venta de casas y Departamentos Exclusivos de lujo</h1>   
+            
+        </div>  
+    </header>
+
+	<main class="contenedor">
+		<h1 class="centrar-texto fw-300">Conoce sobre nosotros</h1>
+		<div class="contenido-nosotros">
+			<div class="imagen">
+				<img src="img/nosotros.jpg" alt="Imagen nosotros">
+			</div>
+			<div class="texto-nosotros">
+				<blockquote>25 Años de Experiencia</blockquote>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+					viverra nisi in vulputate ultricies. Aenean sed risus pharetra,
+					sagittis dolor condimentum, dapibus est. Ut non feugiat purus.
+					Vivamus metus nunc, pretium a sem eget, tincidunt vestibulum erat.
+					Integer suscipit ante a cursus placerat. Mauris venenatis tortor
+					nibh, ac semper risus mattis a. Fusce porttitor id odio gravida
+					consectetur. Sed elementum nisi eget neque vehicula, id varius nibh
+					commodo. Etiam euismod, erat eget porttitor dapibus, eros erat
+					aliquet ipsum, sed fermentum nisi arcu vitae urna. Sed at dui ut
+					dui scelerisque tempus ac ac purus. Vivamus vel eros a orci
+					lobortis blandit. <br> <br> Pellentesque porttitor nisl
+					id sollicitudin venenatis. Aenean luctus porta ante et tincidunt.
+					Maecenas cursus quam ac massa semper interdum. Aenean posuere dui a
+					nisi dignissim, quis convallis elit tincidunt. Aliquam porttitor
+					tortor in lectus lacinia tincidunt. Curabitur vehicula nisi massa,
+					eget tincidunt velit porta quis. Class aptent taciti sociosqu ad
+					litora torquent per conubia nostra, per inceptos himenaeos.
+				</p>
+			</div>
+		</div>
+	</main>
+
+	<section class="contenedor seccion">
+		<h2 class="fw-300 centrar-texto">Mas Sobre Nosotros</h2>
+
+		<div class="iconos-nosotros">
+			<div class="icono">
+				<img src="img/icono1.svg" alt="Icono seguridad">
+				<h3>Seguridad</h3>
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt
+					<b>ECUADOR</b> magni porro rem aliquid ipsa eaque praesentium
+					possimus illo! Corrupti libero impedit nesciunt labore, asperiores
+					unde error magnam iusto.
+				</p>
+			</div>
+
+			<div class="icono">
+				<img src="img/icono2.svg" alt="Icono mejor precio">
+				<h3>El Mejor Precio</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Ipsam sunt quibusdam magni porro rem aliquid ipsa eaque praesentium
+					possimus illo! Corrupti libero impedit nesciunt labore, asperiores
+					unde error magnam iusto.</p>
+			</div>
+
+			<div class="icono">
+				<img src="img/icono3.svg" alt="Icono a tiempo">
+				<h3>A Tiempo</h3>
+				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+					Ipsam sunt quibusdam magni porro rem aliquid ipsa eaque praesentium
+					possimus illo! Corrupti libero impedit nesciunt labore, asperiores
+					unde error magnam iusto.</p>
+			</div>
+		</div>
+	</section>
+
+	<footer th:replace="plantilla/template :: footer"></footer>
+	
+</body>
+</html>
